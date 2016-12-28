@@ -31,8 +31,7 @@ class Api
         $data = json_decode($body, JSON_OBJECT_AS_ARRAY);
 
         return [
-            'followers' => (int)$data['followers'],
-            'package'   => $this->parameters['package']
+            'followers' => (int)$data['followers']
         ];
     }
 }
