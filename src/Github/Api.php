@@ -1,4 +1,5 @@
 <?php
+
 namespace Lametric\Github;
 
 use GuzzleHttp\Client;
@@ -18,6 +19,7 @@ class Api
 
     /**
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getResult()
     {

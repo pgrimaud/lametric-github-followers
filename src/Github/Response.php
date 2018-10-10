@@ -1,4 +1,5 @@
 <?php
+
 namespace Lametric\Github;
 
 class Response
@@ -6,13 +7,13 @@ class Response
     /**
      * @return mixed
      */
-    public function setUnAuthorized()
+    public function setError($error)
     {
         return $this->asJson([
             'frames' => [
                 [
                     'index' => 0,
-                    'text'  => 'Unknown user',
+                    'text'  => $error,
                     'icon'  => 'i6574'
                 ]
             ]
