@@ -1,14 +1,16 @@
 <?php
 
-namespace Lametric\Github;
+declare(strict_types=1);
+
+namespace Github;
 
 class Validation
 {
     /**
      * @var array
      */
-    private $parameters = [
-        'username'
+    private array $parameters = [
+        'username',
     ];
 
     /**
@@ -16,7 +18,7 @@ class Validation
      * @param array $parameters
      * @throws \Exception
      */
-    public function __construct($parameters = [])
+    public function __construct(array $parameters = [])
     {
         foreach ($this->parameters as $name) {
             if (empty($parameters[$name])) {
@@ -30,17 +32,8 @@ class Validation
     /**
      * @return array
      */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
-    }
-
-    /**
-     * @param $parameter
-     * @return mixed|null
-     */
-    public function getParameter($parameter)
-    {
-        return isset($this->parameters[$parameter]) ? $this->parameters[$parameter] : null;
     }
 }

@@ -1,49 +1,55 @@
 <?php
 
-namespace Lametric\Github;
+declare(strict_types=1);
+
+namespace Github;
 
 class Response
 {
     /**
-     * @return mixed
+     * @param string $error
+     *
+     * @return string
      */
-    public function setError($error)
+    public function setError(string $error): string
     {
         return $this->asJson([
             'frames' => [
                 [
                     'index' => 0,
                     'text'  => $error,
-                    'icon'  => 'i6574'
-                ]
-            ]
+                    'icon'  => 'i6574',
+                ],
+            ],
         ]);
     }
 
     /**
      * @param array $data
-     * @return mixed
+     *
+     * @return string
      */
-    public function asJson($data = array())
+    public function asJson(array $data = []): string
     {
         header("Content-Type: application/json");
-        return json_encode($data, JSON_PRETTY_PRINT);
+        return json_encode($data);
     }
 
     /**
-     * @param array $array
-     * @return mixed
+     * @param array $data
+     *
+     * @return string
      */
-    public function setData($array = [])
+    public function setData($data = []): string
     {
         return $this->asJson([
             'frames' => [
                 [
                     'index' => 0,
-                    'text'  => $array['followers'],
-                    'icon'  => 'i6574'
-                ]
-            ]
+                    'text'  => $data['followers'],
+                    'icon'  => 'i6574',
+                ],
+            ],
         ]);
     }
 }

@@ -1,15 +1,18 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+$config = require_once __DIR__ . '/../config/parameters.php';
 
-use Lametric\Github;
+Sentry\init(['dsn' => $config['sentry_key']]);
 
-$response = new Github\Response();
+use Github\{Api, Response, Validation};
+
+$response = new Response();
 
 try {
+    $parameters = new Validation($_GET);
 
-    $parameters = new Github\Validation($_GET);
-    $api        = new Github\Api();
+    $api = new Api();
     $api->setParameters($parameters->getParameters());
 
     echo $response->setData($api->getResult());

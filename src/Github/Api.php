@@ -1,18 +1,20 @@
 <?php
 
-namespace Lametric\Github;
+declare(strict_types=1);
+
+namespace Github;
 
 use GuzzleHttp\Client;
 
 class Api
 {
     /** @var array */
-    private $parameters = [];
+    private array $parameters = [];
 
     /**
      * @param array $parameters
      */
-    public function setParameters($parameters)
+    public function setParameters(array $parameters = [])
     {
         $this->parameters = $parameters;
     }
@@ -21,7 +23,7 @@ class Api
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getResult()
+    public function getResult(): array
     {
         $endpoint = 'https://api.github.com/users/' . $this->parameters['username'];
 
@@ -30,10 +32,10 @@ class Api
 
         $body = $result->getBody();
 
-        $data = json_decode($body, JSON_OBJECT_AS_ARRAY);
+        $data = json_decode($body, true);
 
         return [
-            'followers' => (int)$data['followers']
+            'followers' => (int)$data['followers'],
         ];
     }
 }
