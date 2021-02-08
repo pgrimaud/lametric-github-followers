@@ -32,7 +32,7 @@ class Api
 
         $body = $result->getBody();
 
-        $data = json_decode($body, true);
+        $data = json_decode((string)$body, true);
 
         return [
             'followers' => (int)$data['followers'],
