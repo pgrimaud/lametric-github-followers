@@ -1,5 +1,8 @@
 # Github Followers for LaMetric
 
+> [!CAUTION]
+> READ-ONLY : APP MIGRATED TO https://github.com/pgrimaud/lumiere
+
 ![LaMetric Packagist Index](https://raw.githubusercontent.com/pgrimaud/lametric-github-followers/master/images/app.gif)
 
 # How it works ?
